@@ -38,4 +38,4 @@ jobs:
           folder: dist/packages/studio-web # The folder the action should deploy.
           force: false # rebase instead of force push by default
           target-folder: dev
-          commit-message: "Deploy dev preview to gh-pages from ${{ github.sha }}"
+          commit-message: "Deploy dev preview to gh-pages from @ ${{ github.repository }}@${{ github.sha }}"
