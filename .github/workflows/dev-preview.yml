@@ -28,9 +28,9 @@ jobs:
           npx nx test:once studio-web
       - name: Build
         run: |
-          npx nx build studio-web --configuration=production
-          npx nx build studio-web --configuration=production --localize=fr --deleteOutputPath=false
-          npx nx build studio-web --configuration=production --localize=es --deleteOutputPath=false
+          npx nx build studio-web --configuration=production --base-href=/dev/
+          npx nx build studio-web --configuration=production --base-href=/dev/ --localize=fr --deleteOutputPath=false
+          npx nx build studio-web --configuration=production --base-href=/dev/ --localize=es --deleteOutputPath=false
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
