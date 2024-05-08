@@ -1,4 +1,5 @@
 name: Deploy dev preview
+concurrency: dev-preview
 on:
   push:
     branches:
@@ -16,13 +17,11 @@ jobs:
           node-version: "20"
       - name: Install
         run: |
-          # The default config is for the monorepo, while this is for standalone
           npm install
       - name: Build web-component
         run: |
           npx nx build web-component
           # create the bundles required for studio-web
-          # TODO: stop updating the bundle, keep the published one.
           npx nx bundle web-component
       - name: Test
         run: |
@@ -38,6 +37,4 @@ jobs:
           branch: gh-pages # The branch the action should deploy to.
           folder: dist/packages/studio-web # The folder the action should deploy.
           force: false # rebase instead of force push by default
-          clean-exclude: |
-            pr-preview/
-            dev/
+          target-folder: dev
